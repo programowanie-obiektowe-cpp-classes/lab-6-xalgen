@@ -9,8 +9,17 @@
 std::vector< char > foo(std::list< Human >& people)
 {
     std::vector< char > retval(people.size());
+    auto it = retval.rbegin();
+    std::for_each(people.begin(), people.end(), [& it](Human& h) { 
+        
+        h.birthday();
 
-    // Twoja implementacja tutaj
+        *it = h.isMonster() ? 'n' : 'y';
+        it++;
+
+        });
+    
+
 
     return retval;
 }
